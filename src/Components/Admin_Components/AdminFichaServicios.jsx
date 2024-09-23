@@ -41,9 +41,11 @@ function ConvetirImagen(e) {
       title: "Servicio Creado con exito!",
       text: "",
       icon: "success"
+      
 
     });
-    SendServices(InsetarServicio, DescripcionServicio, DetalleServicio, Img)
+  SendServices(InsetarServicio, DescripcionServicio, DetalleServicio, Img)
+
     
    }else{
     Swal.fire({
@@ -63,7 +65,7 @@ function ConvetirImagen(e) {
         <h1 className='TituloH2'>Ingresar Servicio a Home</h1>
     </div>
 
-    <div className='ContenedorFormularioServicios'>
+    <form className='ContenedorFormularioServicios'>
         <input 
             className='inputServicioUno' 
             onChange={ConvetirImagen} 
@@ -94,7 +96,8 @@ function ConvetirImagen(e) {
             className='btnAddServices'>
             Add
         </button>
-    </div>
+    </form>
+
 </div>
    </div>
   )

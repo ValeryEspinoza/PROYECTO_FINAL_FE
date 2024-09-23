@@ -14,21 +14,23 @@ function ServicesData() {
  const [DatosServicios, SetDatosServicios] = useState([]);
  const [datoModal , SetDatoModal]=useState([]);
 
- const [boleServicio, setBolServicio] = useState(false);
- const [boleDescripcion, setBolDescripcion] = useState(false);
- const [boleDetalles, setBolDetalles] = useState(false);
+//Booleanos
+const [BolServicio, setBolServicio]= useState(false);
+const [BolDescripcion, SetBolDescripcion]= useState(false);
+const [BolDetalles, SetBolDetalles]= useState(false);
+const [BolImagen, SetBolImagen]= useState(false);
+
+///Value default
+const [ServicioNombre, SetServicioNombre]=useState();
+const [DescripcionServicios, SetDescripcionServicios]=useState();
+const [DestallesServicios, SetDestallesServicios]=useState();
+const [ImagenServicio, SetImagenServicio]=useState();
 
 
- ///Enviar al put
- const [Prueba, SetPrueba]= useState()
- const [Prueba2, SetPrueba2]= useState()
- const [Prueba3, SetPrueba3]= useState()
+//Objeto Editado
+const [DatosEditados, SetDatosEditados]=useState([]);
+const [Id, SetId]= useState();
 
- ///Valores 
- const [ServicioValue, SetServicioValue]=useState();
- const [DescripcionValue, SetDescripcionValue]=useState();
- const [ImagenValue, SetImagenValue]=useState();
- const [DetallesValue, SetDetallesValue]=useState();
 
 
 
@@ -36,7 +38,6 @@ function ServicesData() {
  const values = [true];
  const [fullscreen, setFullscreen] = useState(true);
  const [show, setShow] = useState(false);
-
 
 
 //Funcion Boostrap 
@@ -51,8 +52,6 @@ function ServicesData() {
     async function ObtenerServiciosData() {
 
     const servicesData = await GetServices()
-
-   
     SetDatosServicios(servicesData)
     }
 
@@ -61,39 +60,116 @@ function ServicesData() {
   }, [])
 
 /// Delete
-  function Delete(id) {
-  DeleteServices(id)
+  async function Delete(id) {
+   
+  DeleteServices(id)  
+  const filtro= Array(DatosServicios.filter((e)=> e.id !== id))
+ SetDatosServicios(...filtro)
+  
   }
 
 /////Carga de datos al Modal
   function  cargarDatos(DatosServicios,id) {
     const registroFiltrado= DatosServicios.filter(e=> e.id === id)
-    console.log(registroFiltrado);
     SetDatoModal(registroFiltrado)
+
     {values.map((v) => ( 
 
       handleShow(v)
 
-      ))}
+      ))}  
 
-  
+
+      SetServicioNombre(registroFiltrado[0].Servicio)
+      SetDescripcionServicios(registroFiltrado[0].Descripcion)
+      SetDestallesServicios(registroFiltrado[0].Detalle)
+      SetImagenServicio(registroFiltrado[0].Imagen)
+      SetId(registroFiltrado[0].id)
   }
 
+  
 //////Formulario ///
-function ObtenerDatos(formData) {
-  const NombreS = formData.get("ServicioS")
-  const DetalleS = formData.get("DetalleS")
-  const DescripcionS = formData.get("Descripcions")
-  SetServicioValue(NombreS)
-  SetDetallesValue(DetalleS)
-  SetDescripcionValue(DescripcionS)
+
+function cargaServi(e,v) {
+  setBolServicio(v)
+  SetServicioNombre(e.target.value)
+}
+function cargaDescripcion(e,v) {
+  SetBolDescripcion(v)
+  SetDescripcionServicios(e.target.value)
   
 }
-console.log(ServicioValue);
-console.log(DescripcionValue);
-console.log(DetallesValue);
+function cargaDetalles(e,v) {
+  SetBolDetalles(v)
+  SetDestallesServicios(e.target.value)
+  
+}
 
+function ConvetirImagen(e, v) {
+  SetBolImagen(v)
+  const data = new FileReader()
+ data.addEventListener("load", ()=>(
+  SetImagenServicio(data.result)
+ ))
 
+ data.readAsDataURL(e.target.files[0])
+  
+}
+
+//Booleanos
+
+function btnEditar() {
+  function Prueba() {
+      
+    if ( BolServicio===true ) {
+     
+      
+    }else{
+     SetServicioNombre(datoModal[0]?.Servicio);
+      
+    }
+    
+    if ( BolDescripcion===true ) {
+ 
+      
+    }else{
+      SetDescripcionServicios(datoModal[0]?.Descripcion); 
+    }
+    
+    if (BolDetalles===true) {
+ 
+    }else{
+      SetDestallesServicios(datoModal[0]?.Detalle);
+    }
+
+    if (BolImagen===true) {
+      SetImagenServicio()
+    }else{
+      SetImagenServicio(datoModal[0]?.Imagen);
+    }
+    
+    }
+    Prueba()
+    
+    async function enviarDatos(ServicioNombre, DescripcionServicio, DetallesServicio, ImagenEditada) {
+
+     const DatosEditados ={
+      Servicio: ServicioNombre,
+      Descripcion: DescripcionServicio,
+      Detalle : DetallesServicio,
+      Imagen : ImagenEditada
+     }
+
+     SetDatosEditados(DatosEditados)
+
+     const datos  = Array(await EditServices(DatosEditados, Id))
+     SetDatosServicios([...datos])
+     
+    }
+    enviarDatos(ServicioNombre, DescripcionServicios, DestallesServicios, ImagenServicio)
+   
+  
+}
 
 
   return (
@@ -127,22 +203,29 @@ console.log(DetallesValue);
     ))}
   </div>
 
-
+ 
   {/* Modal para editar servicio */}
   <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
   <Modal.Header closeButton className="modalHeaderServicesData">
   <Modal.Title className="modalHeaderServicesDataTitle">Editar Servicio</Modal.Title>
 </Modal.Header>
-    <Modal.Body className='modalBodyServicesData'>
-    <form action={ObtenerDatos}>
-      <input placeholder='Nombre del Servicio' name="ServicioS"/>
-      <input placeholder='Descripcion del servicio' name='DescripcionS' onChange={DescripcionValue}/>
-      <input  type="text" name="DetalleS" onChange={DetallesValue} />
-      <input name='Imagen' type="file" />
-      <button type="submit">Editar</button>
-    </form>
+    <Modal.Body className='modalBodyServicesData'> 
+
+    <form > </form>
+      <img src={ImagenServicio} className='ImagenServicesEdit' />
+      <input  onChange={e => cargaServi(e, true)} value={ServicioNombre} placeholder='Nombre del Servicio' name="ServicioS"/>
+      <input  onChange={e => cargaDescripcion(e, true)} value={DescripcionServicios} placeholder='Descripcion del servicio' name='DescripcionS'/>
+      <input  onChange={e => cargaDetalles(e, true)}  value={DestallesServicios}  placeholder='Detalle del Servicio' type="text" name="DetalleS" />
+      <input   onChange={e => ConvetirImagen(e,true)} type="file" />
+     
+      <button onClickCapture={btnEditar} type="submit">Editar</button>
+
+
 </Modal.Body>
   </Modal>
+
+
+  
 </div>
   )
 }
