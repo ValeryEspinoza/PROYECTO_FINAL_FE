@@ -1,28 +1,17 @@
-/*import React, { useState } from 'react';
-import GetKey from '../../Services/Get/GetKey';
+
+import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useState } from 'react';
-
-
-
 
 const ProtectedRoute = ({ children }) => {
-    const [key, SetKey]=useState("")
+    
+    const estaAutenticado = localStorage.getItem('Autenticado') === 'true'; 
 
-       async function ObtenerKey() {
-     
-        const acceso = await  GetKey() 
-            SetKey(acceso)
-   
-    }
-
-    ObtenerKey()
-
-    if (!(key === false)) {
-        return <Navigate to="/Home" />
+    if (!estaAutenticado ) {
+       
+        return <Navigate to="/" />;
     }
 
     return children;
 };
 
-export default ProtectedRoute;*/
+export default ProtectedRoute;

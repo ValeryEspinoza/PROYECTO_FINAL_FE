@@ -1,0 +1,27 @@
+.SeccionTres {
+    background-color: #f0f4f8; /* Color de fondo suave */
+    padding: 20px; /* Espaciado alrededor del contenido */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 800px; /* Ancho máximo para una mejor presentación */
+    margin: auto; /* Centrar en la página */
+  }
+  
+  .TituloH1 {
+    font-size: 2.5rem; /* Tamaño de fuente grande */
+    color: #2c3e50; /* Color oscuro para el título */
+    text-align: center; /* Centrar el texto */
+    margin-bottom: 10px; /* Espaciado inferior */
+  }
+  
+  .Subtitulo {
+    font-size: 1.5rem; /* Tamaño de fuente mediano */
+    color: #34495e; /* Color un poco más claro */
+    text-align: center; /* Centrar el texto */
+    margin-bottom: 20px; /* Espaciado inferior */
+  }
+  
+  .MapaIframe {
+    border: none; /* Sin borde */
+    border-radius: 10px; /* Bordes redondeados para el iframe */
+  }

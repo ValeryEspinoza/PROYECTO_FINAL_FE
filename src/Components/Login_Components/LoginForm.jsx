@@ -5,6 +5,7 @@ import GetUser from '../../Services/Get/GetUsers'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
+import SendUserAccess from '../../Services/Post/PostUserAccess'
 
 function LoginForm() {
   //Hooks
@@ -34,7 +35,7 @@ function LoginForm() {
         text: "Se ha registrado el usuario con exito",
         icon: "success"
         });
-
+          SendUserAccess((Users.find(({Email}) => Email === EmailUser)))
       
       setTimeout(() => {
         navigate("/Formularios");
@@ -72,7 +73,7 @@ function LoginForm() {
 
     <button onClick={Login} className="btn-login">Log In</button>
     
-    <Link className='irAHome' to="/Home"><p>Ir a Home</p></Link>
+    <Link className='irAHome' to="/"><p>Ir a Home</p></Link>
     <h2 className="alert-message">{MensajeAlerta}</h2>
 </div>
 </div>

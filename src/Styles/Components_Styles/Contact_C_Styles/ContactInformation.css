@@ -1,0 +1,39 @@
+.seccion-informacion-contact {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 2rem; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más intensa */
+    max-width: 900px; /* Ancho máximo */
+    margin: 2rem auto; /* Margen centrado */
+    font-family: 'Roboto', sans-serif; /* Fuente moderna */
+}
+
+.titulo-h1 {
+    font-size: 2.5rem; /* Tamaño de fuente mayor */
+    color: #333; /* Color del texto */
+    margin-bottom: 1rem; /* Espaciado inferior */
+    text-align: center; /* Centrar el texto */
+}
+
+.contenedores-texto {
+    color: #555; /* Color del texto */
+    line-height: 1.6; /* Espaciado entre líneas */
+    font-size: 1rem; /* Tamaño de fuente */
+}
+
+.contact-info {
+    margin-top: 1.5rem; /* Espacio superior */
+    padding: 1rem; /* Espacio interno */
+    border-top: 1px solid #eaeaea; /* Línea divisoria */
+    text-align: center;
+}
+
+.contact-info h2 {
+    font-size: 1.8rem; /* Tamaño de título secundario */
+    color: #007BFF; /* Color atractivo */
+    margin-bottom: 1rem; /* Espaciado inferior */
+}
+
+.contact-info p {
+    margin: 0.5rem 0; /* Espaciado vertical */
+}

@@ -7,20 +7,23 @@ import Contact from '../Pages/Contact'
 import AboutUs from '../Pages/AboutUs'
 import Formularios from '../Pages/Formularios'
 import Servicios from '../Pages/Servicios'
+import ProtectedRoute from '../Components/General_Components/ProtectedRoutes'
+import Proformas from '../Pages/Proformas'
 
 function Routing() {
   return (
     <Router>
     <Routes>
       
-      <Route path="/Register" element={<Register />} />
+      
       <Route path="/Login" element={<Login />} />
       <Route path="/" element={<Home/>} />
       <Route path="/Contact" element={<Contact />} />
       <Route path="/About" element={<AboutUs />} />
-      <Route path="/Formularios" element={<Formularios />} />
-      <Route path="/Servicios" element={<Servicios />} />
-
+      <Route path="/Formularios" element={<ProtectedRoute><Formularios /></ProtectedRoute>} />
+      <Route path="/Servicios" element={<ProtectedRoute><Servicios /></ProtectedRoute>} />
+      <Route path="/Register" element={<ProtectedRoute><Register /></ProtectedRoute>} />
+      <Route path="/Proformas" element={<ProtectedRoute><Proformas /></ProtectedRoute>} />
        
 
     </Routes>

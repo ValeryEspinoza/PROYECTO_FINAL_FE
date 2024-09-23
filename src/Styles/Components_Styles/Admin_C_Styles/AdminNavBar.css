@@ -8,7 +8,7 @@
 
 .nav-links {
     display: flex; /* Usa flexbox para alinear elementos */
-    justify-content: space-around; /* Espaciado entre elementos */
+    justify-content: space-around ; /* Espaciado entre elementos */
     list-style-type: none; /* Elimina los puntos de la lista */
     margin: 0; /* Elimina margen */
     padding: 10px 0; /* Padding superior e inferior */

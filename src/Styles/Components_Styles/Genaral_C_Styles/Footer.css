@@ -1,57 +1,77 @@
 .footer {
-    background-color: #1a1a1a; /* Dark background */
-    color: #f0f0f0; /* Light text */
-    padding: 40px 20px; /* Padding for space */
-    display: flex; /* Flexbox layout */
-    justify-content: space-around; /* Space out items */
-  }
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #001f3f; /* Azul muy oscuro */
+  color: white;
+}
+
+.CardContainer {
+  background-color: #003366; /* Azul oscuro */
+  border-radius: 8px;
+  width: 30%;
+  margin: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.CardContainerForm {
+  background-color: #003366; /* Azul oscuro */
+  border-radius: 8px;
+  width: 30%;
+  margin: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cardHeaderFooter {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-body {
+  margin: 10px 0;
   
-  .CardContainer {
-  
-    border-radius: 8px; /* Rounded corners */
-    overflow: hidden; /* Prevent overflow */
-    margin: 10px; /* Margin between cards */
-    width: 100%; /* Fixed width for cards */
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
-  }
-  
-  .footer:hover {
-   
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
-  }
-  
-  .card-header {
-    background-color: #3c3c3c; /* Darker header background */
-    padding: 10px; /* Padding for header */
-    font-weight: bold; /* Bold text */
-    text-align: center; /* Centered text */
-  }
-  
-  .card-body {
-    padding: 15px; /* Padding for body */
-  }
-  
-  .card-title {
-    margin-bottom: 10px; /* Space below title */
-  }
-  
-  .btn {
-    background-color: #007bff; /* Button color */
-    border: none; /* Remove border */
-    color: #ffffff; /* White text */
-    padding: 10px; /* Padding for button */
-    border-radius: 5px; /* Rounded button */
-    cursor: pointer; /* Pointer on hover */
-    transition: background-color 0.3s; /* Smooth color change */
-  }
-  
-  .btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
-  .card-footer {
-    background-color: #3c3c3c; /* Footer background */
-    padding: 5px; /* Padding for footer */
-    text-align: center; /* Centered text */
-    font-size: 0.9em; /* Slightly smaller text */
-  }
+}
+
+.card-footer {
+  font-size: 0.9rem;
+  color: #b0c4de; /* Azul claro para el texto secundario */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Azul para el botón */
+  border: none;
+}
+.comentarioFooter{
+  color: rgb(221, 197, 197);
+}
+.comment-section {
+  flex: 1; /* Para que ocupe el espacio restante */
+  background-color: #002147; /* Fondo oscuro para la sección de comentarios */
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.textareaFooter {
+
+  color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Bordes redondeados */
+  width: 100%; /* Para que ocupe todo el ancho */
+  padding: 10px; /* Espaciado interno */
+}
+
+textarea:focus {
+  border-color: #007bff; /* Bordes azules en foco */
+  outline: none;
+}
+
+.form-label {
+  color: #e6e6e6; /* Color claro para las etiquetas */
+}
+
+.btn-submit {
+  background-color: #0056b3; /* Un azul más oscuro para el botón de envío */
+  border: none;
+}
