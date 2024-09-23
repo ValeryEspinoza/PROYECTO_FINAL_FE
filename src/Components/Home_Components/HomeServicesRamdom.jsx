@@ -11,11 +11,15 @@ function HomeServicesRamdom() {
     async function ObtenerServicios() {
     const ServicesData = await GetServices()
       SetServices(ServicesData)
+    
+      
     }
 
     ObtenerServicios()
 
   }, [])
+  console.log(Services);
+  
   return (
     <div>
         <div className='ContenedorServicesHome'>

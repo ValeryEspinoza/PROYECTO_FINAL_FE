@@ -10,3 +10,6 @@ Currently, two official plugins are available:
  npm i react-icons
  npm i --save @fortawesome/fontawesome-svg-core
  npm install sweetalert2
+ npm install react-router-dom
+npm install -g json-server
+npm install @emailjs/browser  

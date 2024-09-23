@@ -65,7 +65,7 @@ function ConvetirImagen(e) {
         <h1 className='TituloH2'>Ingresar Servicio a Home</h1>
     </div>
 
-    <form className='ContenedorFormularioServicios'>
+    <div className='ContenedorFormularioServicios'>
         <input 
             className='inputServicioUno' 
             onChange={ConvetirImagen} 
@@ -96,8 +96,8 @@ function ConvetirImagen(e) {
             className='btnAddServices'>
             Add
         </button>
-    </form>
-
+    </div>
+    
 </div>
    </div>
   )

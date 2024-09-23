@@ -19,7 +19,7 @@ function ControlledCarousel() {
       <Carousel.Item>
       <img
           className="d-block w-100 carousel-image"
-          src={LogoIMG}
+          src="src\Img\Components_Img\portrait-person-doing-arts-crafts.jpg"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -30,7 +30,7 @@ function ControlledCarousel() {
       <Carousel.Item>
       <img
            className="d-block w-100 carousel-image"
-          src={LogoIMG}
+          src="src\Img\Components_Img\medium-shot-smiley-woman-fixing-roof.jpg"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -41,7 +41,7 @@ function ControlledCarousel() {
       <Carousel.Item>
       <img
            className="d-block w-100 carousel-image"
-          src={LogoIMG}
+          src="src\Img\Components_Img\man-working-with-angular-grinder-with-sparkles-from-it.jpg"
           alt="First slide"
         />
         <Carousel.Caption>

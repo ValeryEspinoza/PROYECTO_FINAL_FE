@@ -13,7 +13,7 @@ function ServicesData() {
 ////Hooks
  const [DatosServicios, SetDatosServicios] = useState([]);
  const [datoModal , SetDatoModal]=useState([]);
-
+const [Alerta, SetAlerta]=useState("");
 //Booleanos
 const [BolServicio, setBolServicio]= useState(false);
 const [BolDescripcion, SetBolDescripcion]= useState(false);
@@ -162,8 +162,20 @@ function btnEditar() {
 
      SetDatosEditados(DatosEditados)
 
-     const datos  = Array(await EditServices(DatosEditados, Id))
-     SetDatosServicios([...datos])
+    await EditServices(DatosEditados, Id)
+
+
+     SetDatosServicios(prevDatos =>
+      prevDatos.map(service =>
+        service.id === Id ? { ...service, ...DatosEditados } : service
+      )
+    );
+
+    SetAlerta("Datos Actualizados!")
+    setTimeout(() => {
+      SetAlerta("");
+    }, 4000); 
+
      
     }
     enviarDatos(ServicioNombre, DescripcionServicios, DestallesServicios, ImagenServicio)
@@ -211,7 +223,8 @@ function btnEditar() {
 </Modal.Header>
     <Modal.Body className='modalBodyServicesData'> 
 
-    <form > </form>
+    
+        <h2>{Alerta}</h2>
       <img src={ImagenServicio} className='ImagenServicesEdit' />
       <input  onChange={e => cargaServi(e, true)} value={ServicioNombre} placeholder='Nombre del Servicio' name="ServicioS"/>
       <input  onChange={e => cargaDescripcion(e, true)} value={DescripcionServicios} placeholder='Descripcion del servicio' name='DescripcionS'/>
